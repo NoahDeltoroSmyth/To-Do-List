@@ -9,3 +9,8 @@ export async function fetchToDos() {
   const resp = await client.from('todos').select('*');
   return checkError(resp);
 }
+
+export async function checkCompleted(id, is_complete) {
+  const resp = await client.from('todos').update({ is_complete }).eq('id', id);
+  return checkError(resp);
+}
