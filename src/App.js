@@ -3,7 +3,8 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import { getUser, logout } from './services/userRoute';
 import Auth from './views/Auth';
-import ToDoList from './components/ToDoList';
+// import ToDoForm from './components/ToDoForm';
+import ToDoAdmin from './views/ToDoAdmin';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(getUser());
@@ -20,7 +21,7 @@ function App() {
           <Route exact path="/">
             {currentUser && (
               <>
-                <ToDoList />
+                <ToDoAdmin setCurrentUser={setCurrentUser} />
                 <button onClick={logoutUser}>Logout</button>
               </>
             )}
