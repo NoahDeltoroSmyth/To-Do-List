@@ -5,6 +5,7 @@ import { getUser, logout } from './services/userRoute';
 import Auth from './views/Auth';
 // import ToDoForm from './components/ToDoForm';
 import ToDoAdmin from './views/ToDoAdmin';
+import ToDoList from './views/ToDoList';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(getUser());
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/">
             {currentUser && (
               <>
+                <ToDoList />
                 <ToDoAdmin />
                 <button onClick={logoutUser}>Logout</button>
               </>

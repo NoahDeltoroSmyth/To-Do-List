@@ -14,6 +14,7 @@ export default function ToDoAdmin() {
       alert('error');
     }
     setTodo('');
+    window.location.reload();
   };
 
   return (
