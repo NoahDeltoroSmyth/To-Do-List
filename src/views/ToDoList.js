@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchToDos } from '../services/toDoRoute';
+import { fetchToDos, checkCompleted } from '../services/toDoRoute';
 import ToDos from '../components/ToDos';
 
 export default function ToDoList() {
@@ -12,11 +12,20 @@ export default function ToDoList() {
     };
     fetchData();
   }, []);
+
+  const handleClick = async (todo) => {
+    console.log(todo);
+    await checkCompleted(todo.id, !todo.is_complete);
+    const resp = await fetchToDos();
+    console.log(resp);
+    setTodos(resp);
+  };
+
   return (
     <div>
       {todos.map((todo) => (
         <div key={todo.id}>
-          <ToDos {...todo} />
+          <ToDos todo={todo} handleClick={handleClick} />
         </div>
       ))}
     </div>

@@ -3,7 +3,6 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import { getUser, logout } from './services/userRoute';
 import Auth from './views/Auth';
-// import ToDoForm from './components/ToDoForm';
 import ToDoAdmin from './views/ToDoAdmin';
 import ToDoList from './views/ToDoList';
 
