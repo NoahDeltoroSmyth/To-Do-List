@@ -3,9 +3,9 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import { getUser, logout } from './services/userRoute';
 import Auth from './views/Auth';
-// import ToDoForm from './components/ToDoForm';
 import ToDoAdmin from './views/ToDoAdmin';
 import ToDoList from './views/ToDoList';
+import Header from './components/Header';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(getUser());
@@ -22,9 +22,11 @@ function App() {
           <Route exact path="/">
             {currentUser && (
               <>
-                <ToDoList />
-                <ToDoAdmin />
-                <button onClick={logoutUser}>Logout</button>
+                <Header logoutUser={logoutUser} currentUser={currentUser} />
+                <div className="todo-page">
+                  <ToDoAdmin />
+                  <ToDoList />
+                </div>
               </>
             )}
             {!currentUser && <Auth setCurrentUser={setCurrentUser} />}
