@@ -11,8 +11,6 @@ export async function fetchToDos() {
 }
 
 export async function checkCompleted(id, is_complete) {
-  console.log(id);
   const resp = await client.from('todos').update({ is_complete }).eq('id', id);
-  console.log(resp);
   return checkError(resp);
 }

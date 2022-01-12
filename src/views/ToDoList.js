@@ -14,15 +14,13 @@ export default function ToDoList() {
   }, []);
 
   const handleClick = async (todo) => {
-    console.log(todo);
     await checkCompleted(todo.id, !todo.is_complete);
     const resp = await fetchToDos();
-    console.log(resp);
     setTodos(resp);
   };
 
   return (
-    <div>
+    <div className="todo-list">
       {todos.map((todo) => (
         <div key={todo.id}>
           <ToDos todo={todo} handleClick={handleClick} />

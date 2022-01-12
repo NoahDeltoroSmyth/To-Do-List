@@ -18,7 +18,7 @@ export default function ToDoAdmin() {
   };
 
   return (
-    <div>
+    <div className="todo-admin">
       <ToDoForm todo={todo} setTodo={setTodo} handleSubmit={handleSubmit} />
     </div>
   );
