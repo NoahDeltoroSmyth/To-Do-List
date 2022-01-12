@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/">
             {currentUser && (
               <>
-                <ToDoAdmin setCurrentUser={setCurrentUser} />
+                <ToDoAdmin />
                 <button onClick={logoutUser}>Logout</button>
               </>
             )}
