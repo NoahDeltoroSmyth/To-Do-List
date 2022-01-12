@@ -1,0 +1,18 @@
+.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.link h1 {
+  cursor: pointer;
+  color: black;
+  margin: 10px;
+}
+
+.link h1.active {
+  border: 2px solid blue;
+  width: 120px;
+  color: blue;
+  border-radius: 8px;
+}
