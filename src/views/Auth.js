@@ -19,7 +19,7 @@ export default function Auth({ setCurrentUser }) {
       } else {
         resp = await signUpUser(email, password);
       }
-      setCurrentUser(resp);
+      setCurrentUser({ user: resp });
     } catch {
       setError('No user found with that email/password');
     }

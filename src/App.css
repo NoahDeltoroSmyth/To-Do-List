@@ -34,15 +34,28 @@ h3 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .todo {
   margin: 15px;
-  border: antiquewhite 2px solid;
+  border: antiquewhite 10px solid;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 200px;
-  height: 150px;
+  height: 200px;
   contain: content;
+}
+
+.todo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  contain: content;
+  height: 150px;
 }
