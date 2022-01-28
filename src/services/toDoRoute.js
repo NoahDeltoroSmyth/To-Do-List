@@ -19,3 +19,8 @@ export async function deleteToDoById(id) {
   const resp = await client.from('todos').delete().eq('id', id);
   return checkError(resp);
 }
+
+export async function deleteCompleted() {
+  const resp = client.from('todos').delete().eq('is_complete', true);
+  return checkError(resp);
+}
