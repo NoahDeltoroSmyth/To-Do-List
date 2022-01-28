@@ -23,6 +23,7 @@ export default function ToDoList() {
     await deleteCompleted();
     const newTodos = todos.filter((todo) => !todo.is_complete);
     setTodos(newTodos);
+    window.location.reload();
   };
 
   // const handleDelete = async ({ id }) => {
