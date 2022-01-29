@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchToDos, checkCompleted, deleteToDoById } from '../services/toDoRoute';
+import { fetchToDos, checkCompleted, deleteToDoById, deleteCompleted } from '../services/toDoRoute';
 import ToDos from '../components/ToDos';
 
 export default function ToDoList() {
@@ -19,14 +19,21 @@ export default function ToDoList() {
     setTodos(resp);
   };
 
-  const handleDelete = async ({ id }) => {
-    const shouldDelete = confirm('Do you want to delete this task?');
-    if (shouldDelete) {
-      const resp = await deleteToDoById(id);
-      setTodos(resp);
-    }
+  const handleDeleteCompleted = async () => {
+    await deleteCompleted();
+    const newTodos = todos.filter((todo) => !todo.is_complete);
+    setTodos(newTodos);
     window.location.reload();
   };
+
+  // const handleDelete = async ({ id }) => {
+  //   const shouldDelete = confirm('Do you want to delete this task?');
+  //   if (shouldDelete) {
+  //     const resp = await deleteToDoById(id);
+  //     setTodos(resp);
+  //   }
+  //   window.location.reload();
+  // };
 
   //an attempt to make one main delete button to control all todo's was made
   //grab todos state
@@ -35,12 +42,12 @@ export default function ToDoList() {
   //reset state with filtered todos (keeping)
 
   return (
-    <div className="todo-list">
-      {todos.map((todo) => (
-        <div key={todo.id}>
-          <ToDos todo={todo} handleClick={handleClick} handleDelete={handleDelete} />
-        </div>
-      ))}
-    </div>
+    <>
+      <ToDos
+        todos={todos}
+        handleClick={handleClick}
+        handleDeleteCompleted={handleDeleteCompleted}
+      />
+    </>
   );
 }
